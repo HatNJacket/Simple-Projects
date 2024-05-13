@@ -1,0 +1,20 @@
+Skill          Mod    Prof   Stat
+
+Acrobatics   : [+2]          DEX
+Animal Hand. : [-2]          WIS
+Arcana       : [+1]    X     INT
+Athletics    : [+1]          STR
+Deception    : [+4]          CHA
+History      : [-1]          INT
+Insight      : [-2]          WIS
+Intimidation : [+4]          CHA
+Investigation: [-1]          INT
+Medicine     : [-2]          WIS
+Nature       : [+1]    X     INT
+Perception   : [-2]          WIS
+Performance  : [+4]          CHA
+Persuasion   : [+4]          CHA
+Religion     : [-1]          INT
+SleightOfHand: [+2]          DEX
+Sealth       : [+2]          DEX
+Survival     : [-2]          WIS

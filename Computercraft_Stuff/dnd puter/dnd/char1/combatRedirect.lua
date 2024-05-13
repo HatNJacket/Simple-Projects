@@ -1,0 +1,6 @@
+local monitor = peripheral.find("monitor")
+monitor.clear()
+monitor.setTextScale(1)
+monitor.setBackgroundColor(colors.black)
+print("Test")
+shell.run("dnd/char1/combat.lua")

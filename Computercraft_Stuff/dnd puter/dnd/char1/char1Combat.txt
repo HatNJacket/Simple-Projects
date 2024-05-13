@@ -1,0 +1,12 @@
+--Speed Comment
+30
+--Max HP Comment
+9
+--Current HP Comment
+9
+--AC Comment
+18
+--Spell Slots Comment
+1
+--Weapons Comment
+Dagger:    [1d4 + 2] (1d20+4)

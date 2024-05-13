@@ -1,0 +1,120 @@
+os.pullEvent = os.pullEventRaw
+local w,h = term.getSize()
+local monitor = peripheral.find("monitor")
+
+--Print Centered
+
+function printCentered(y,s)
+    local x = math.floor((w - string.len(s)) / 2)
+    term.setCursorPos(x,y)
+    term.clearLine()
+    term.write(s)
+end
+
+--Draw Menu
+
+local nOption = 1
+local edit = 0
+
+local function drawMenu()
+    term.clear()
+    term.setCursorPos(1,1)
+    term.write("BertOS v2.0")
+    term.setCursorPos(1,2)
+    term.write("Press [Left Shift] to edit")
+    
+    term.setCursorPos(w-11,1)
+    if nOption == 1 then
+        term.write("Stats")
+    elseif nOption == 2 then
+        term.write("Skills")
+    elseif nOption == 3 then
+        term.write("Combat")
+    elseif nOption == 4 then
+        term.write("Features")
+    elseif nOption == 5 then
+        term.write("Spells")
+    elseif nOption == 6 then
+        term.write("Equipment")
+    else
+        end
+    
+end
+
+--GUI
+
+term.clear()
+
+local function drawFrontend()
+    printCentered(math.floor(h/2) - 3, "")
+    printCentered(math.floor(h/2) - 2, "Start Menu")
+    printCentered(math.floor(h/2) - 1, "")
+    printCentered(math.floor(h/2) + 0, ((nOption == 1 and "[  Stats   ]") or "Stats "))
+    printCentered(math.floor(h/2) + 1, ((nOption == 2 and "[  Skills  ]") or "Skills"))
+    printCentered(math.floor(h/2) + 2, ((nOption == 3 and "[  Combat  ]") or "Combat"))
+    printCentered(math.floor(h/2) + 3, ((nOption == 4 and "[ Features ]") or "Features"))
+    printCentered(math.floor(h/2) + 4, ((nOption == 5 and "[  Spells  ]") or "Spells"))
+    printCentered(math.floor(h/2) + 5, ((nOption == 6 and "[ Equipment]") or "Equipment"))
+    printCentered(math.floor(h/2) + 7, ((nOption == 7 and "[   Back   ]") or "Back"))
+end
+
+drawMenu()
+drawFrontend()
+
+while true do
+    local e,p = os.pullEvent()
+        if e == "key" then
+            local key = p
+            if key == 87 or key == 265 then
+                if nOption > 1 then
+                    nOption = nOption - 1
+                    drawMenu()
+                    drawFrontend()
+                end
+            elseif key == 83 or key == 264 then
+                if nOption < 7 then
+                    nOption = nOption + 1
+                    drawMenu()
+                    drawFrontend()
+                end
+            elseif key == 340 then
+                edit = 1
+                break
+            elseif key == 257 then
+                break
+        end
+    end
+end
+
+term.clear()
+
+--Conditions
+
+if edit == 1 then
+    if nOption == 1 then
+        shell.run("edit dnd/char2/char2Stats.txt")
+    elseif nOption == 2 then
+        shell.run("edit dnd/char2/char2Skills.txt")
+    elseif nOption == 3 then
+        shell.run("edit dnd/char2/char2Combat.txt")
+    elseif nOption == 4 then
+        shell.run("edit dnd/char2/char2Features.txt")
+    end
+end
+if nOption == 1 then
+    shell.run("dnd/char2/stats")
+elseif nOption == 2 then
+    shell.run("dnd/char2/skills")
+elseif nOption == 3 then
+    shell.run("dnd/char2/combatRedirect.lua")
+elseif nOption == 4 then
+    shell.run("dnd/char2/features")
+elseif nOption == 5 then
+    shell.run("dnd/char2/spells")
+elseif nOption == 6 then
+    shell.run("dnd/chat2/equipment")
+elseif nOption == 7 then
+    shell.run("dnd/dndMenu.lua")
+    
+end
+        
